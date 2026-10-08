@@ -1,0 +1,11 @@
+import { applicationDefault, initializeApp } from 'firebase-admin/app';
+import { getAuth } from 'firebase-admin/auth';
+import { loadEnvConfig } from '@next/env';
+loadEnvConfig(process.cwd());
+const uid=process.argv[2];
+if(!uid) throw Error('Usage: npm run approve-teacher -- FIREBASE_AUTH_UID');
+initializeApp({credential:applicationDefault(),projectId:process.env.FIREBASE_PROJECT_ID});
+const auth=getAuth();
+const user=await auth.getUser(uid);
+await auth.setCustomUserClaims(uid,{...user.customClaims,teacher:true});
+console.log('교사 권한 설정 완료. 해당 사용자는 로그아웃 후 다시 로그인하세요.');

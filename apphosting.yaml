@@ -1,0 +1,34 @@
+runConfig:
+  minInstances: 0
+  maxInstances: 5
+  concurrency: 20
+  cpu: 1
+  memoryMiB: 1024
+env:
+  - variable: GEMINI_API_KEY
+    secret: GEMINI_API_KEY
+    availability: [RUNTIME]
+  - variable: GEMINI_MODEL
+    value: gemini-3.8-flash
+    availability: [RUNTIME]
+  - variable: FIREBASE_PROJECT_ID
+    value: project-6792282058851234828
+    availability: [RUNTIME]
+  - variable: FIREBASE_STORAGE_BUCKET
+    value: project-6792282058851234828.firebasestorage.app
+    availability: [RUNTIME]
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: AIzaSyB9CUlLOS-pELy9y49zM0eQCn4nNYXhbQo
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: project-6792282058851234828.firebaseapp.com
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: project-6792282058851234828
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: project-6792282058851234828.firebasestorage.app
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: 1:3984623335:web:4da1f7169c860cbdb64442
+    availability: [BUILD, RUNTIME]

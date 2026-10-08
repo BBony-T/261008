@@ -1,0 +1,11 @@
+rules_version = '2';
+service firebase.storage {
+ match /b/{bucket}/o {
+  match /teachers/{uid}/pdfs/{fileName} {
+   function owner() { return request.auth != null && request.auth.uid == uid && request.auth.token.teacher == true; }
+   allow read, delete: if owner();
+   allow create: if owner() && fileName.matches('[a-zA-Z0-9-]+[.]pdf') && request.resource.size < 10 * 1024 * 1024 && request.resource.contentType == 'application/pdf';
+   allow update: if false;
+  }
+ }
+}

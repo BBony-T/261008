@@ -1,0 +1,7 @@
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  // All data access goes through authenticated, teacher-authorized server routes.
+  match /{document=**} { allow read, write: if false; }
+ }
+}
